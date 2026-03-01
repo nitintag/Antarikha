@@ -3,6 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antariksha</title>
+    <style>
+        :root { --gold: #D4AF37; --bg: #050505; }
+        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; text-align: center; }
+        section { display: none; padding: 20px; min-height: 100vh; }
+        .active { display: block !important; }
+        .card { background: rgba(255,255,255,0.1); border: 1px solid var(--gold); padding: 20px; margin: 10px auto; border-radius: 12px; max-width: 400px; cursor: pointer; }
+        .grid-item { background: rgba(255,255,255,0.05); padding: 15px; margin: 10px; border-radius: 8px; border-left: 4px solid var(--gold); text-align: left; }
+        .back-btn { background: var(--gold); color: black; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; margin-bottom: 20px; cursor: pointer; }
+        h1 { color: var(--gold); margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <section id="home" class="active">
+        <h1>ANTARIKSHA</h1>
+        <p>Ancient Wisdom & Modern Science</p>
+        <div class="card" onclick="go('planets')">Planetary Realms (सूर्यमाला)</div>
+        <div class="card" onclick="go('rashis')">Zodiac Signs (बारा राशी)</div>
+    </section>
+
+    <section id="planets">
+        <button class="back-btn" onclick="go('home')">← BACK</button>
+        <h2>Planets</h2>
+        <div id="planet-list"></div>
+    </section>
+
+    <section id="rashis">
+        <button class="back-btn" onclick="go('home')">← BACK</button>
+        <h2>Zodiac Signs</h2>
+        <div id="rashi-list"></div>
+    </section>
+
+    <script>
+        // Data
+        const pData = ["Mercury (बुध)", "Venus (शुक्र)", "Earth (पृथ्वी)", "Mars (मंगळ)", "Jupiter (गुरु)", "Saturn (शनी)", "Uranus", "Neptune"];
+        const rData = ["Mesha (मेष)", "Vrishabha (वृषभ)", "Mithuna (मिथुन)", "Karka (कर्क)", "Simha (सिंह)", "Kanya (कन्या)", "Tula (तूळ)", "Vrishchika (वृश्चिक)", "Dhanu (धनु)", "Makara (मकर)", "Kumbha (कुंभ)", "Meena (मीन)"];
+
+        // Navigation
+        function go(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // Fill Content
+        window.onload = () => {
+            pData.forEach(p => document.getElementById('planet-list').innerHTML += `<div class="grid-item">${p}</div>`);
+            rData.forEach(r => document.getElementById('rashi-list').innerHTML += `<div class="grid-item">${r}</div>`);
+        };
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antariksha | Space Heritage</title>
     <style>
         :root { 
