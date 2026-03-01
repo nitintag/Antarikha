@@ -8,7 +8,7 @@
         :root { 
             --gold: #D4AF37; 
             --dark: #050505; 
-            --glass: rgba(255, 255, 255, 0.07); 
+            --glass: rgba(255, 255, 255, 0.08); 
         }
         body { 
             background: var(--dark);
@@ -27,7 +27,7 @@
             background: var(--glass); border: 1px solid rgba(212, 175, 55, 0.2); 
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             padding: 20px; margin: 15px auto; border-radius: 15px; 
-            max-width: 600px; text-align: center; transition: 0.3s;
+            max-width: 600px; text-align: center; transition: 0.3s; cursor: pointer;
         }
         .nav-card:hover { border: 1px solid var(--gold); transform: scale(1.02); background: rgba(212, 175, 55, 0.05); }
         
@@ -43,8 +43,8 @@
         <h1 style="font-size: 2.5em; margin-top: 50px;">ANTARIKSHA</h1>
         
         <div style="text-align: center; padding: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); margin: 0 auto 30px; max-width: 700px;">
-            <p style="font-style: italic; color: #ccc; margin-bottom: 5px;">Explore the intersection of Ancient Indian Wisdom and Modern Space Science.</p>
-            <p style="color: var(--gold); font-weight: bold; font-size: 1.1em;">प्राचीन भारतीय खगोलशास्त्र आणि आधुनिक अंतराळ विज्ञान यांचा संगम।</p>
+            <p style="font-style: italic; color: #ccc; margin-bottom: 5px;">Ancient Wisdom & Modern Science</p>
+            <p style="color: var(--gold); font-weight: bold; font-size: 1.1em;">प्राचीन भारतीय खगोलशास्त्र आणि आधुनिक विज्ञान।</p>
         </div>
 
         <div class="nav-card" onclick="showSection('solar-system')"><h3>Planetary Realms (सूर्यमाला)</h3></div>
@@ -55,8 +55,8 @@
 
     <section id="solar-system"><button class="back-btn" onclick="showSection('main-menu')">← BACK</button><h2>The Planets</h2><div class="grid" id="planet-list"></div></section>
     <section id="rashis"><button class="back-btn" onclick="showSection('main-menu')">← BACK</button><h2>12 Zodiac Signs</h2><div class="grid" id="rashi-list"></div></section>
-    <section id="heritage"><button class="back-btn" onclick="showSection('main-menu')">← BACK</button><h2>Indian Heritage</h2><div class="grid" id="heritage-list"></div></section>
-    <section id="sages"><button class="back-btn" onclick="showSection('main-menu')">← BACK</button><h2>Sages & Scientists</h2><div class="grid" id="sage-list"></div></section>
+    <section id="heritage"><button class="back-btn" onclick="showSection('main-menu')">← BACK</button><h2>Indian Space Heritage</h2><div class="grid" id="heritage-list"></div></section>
+    <section id="sages"><button class="back-btn" onclick="showSection('main-menu')">← BACK</button><h2>Great Minds</h2><div class="grid" id="sage-list"></div></section>
 
     <script>
         function showSection(id) {
@@ -66,31 +66,46 @@
         }
 
         const planets = [
-            { n: "Earth (पृथ्वी)", d: "Our home, the blue planet. / आपला निळा ग्रह, जिथे जीवन बहरले आहे।", img: "https://images-assets.nasa.gov/image/AS17-148-22727/AS17-148-22727~thumb.jpg" },
-            { n: "Mars (मंगळ)", d: "The Red Planet. / मंगळ हा सूर्यमालेतील चौथा ग्रह आहे।", img: "https://images-assets.nasa.gov/image/PIA04352/PIA04352~thumb.jpg" },
-            { n: "Jupiter (गुरु)", d: "The king of planets. / सूर्यमालेतील सर्वात मोठा ग्रह।", img: "https://images-assets.nasa.gov/image/PIA04866/PIA04866~thumb.jpg" }
+            { n: "Mercury (बुध)", d: "Smallest planet, closest to Sun. / सूर्याच्या सर्वात जवळचा ग्रह.", img: "https://images-assets.nasa.gov/image/PIA15162/PIA15162~thumb.jpg" },
+            { n: "Venus (शुक्र)", d: "Hottest planet in our system. / सूर्यमालेतील सर्वात उष्ण ग्रह.", img: "https://images-assets.nasa.gov/image/PIA00271/PIA00271~thumb.jpg" },
+            { n: "Earth (पृथ्वी)", d: "Our home, the blue planet. / आपला निळा ग्रह.", img: "https://images-assets.nasa.gov/image/AS17-148-22727/AS17-148-22727~thumb.jpg" },
+            { n: "Mars (मंगळ)", d: "The Red Planet. / तांबडा ग्रह.", img: "https://images-assets.nasa.gov/image/PIA04352/PIA04352~thumb.jpg" },
+            { n: "Jupiter (गुरु)", d: "The largest gas giant. / सूर्यमालेतील सर्वात मोठा ग्रह.", img: "https://images-assets.nasa.gov/image/PIA04866/PIA04866~thumb.jpg" },
+            { n: "Saturn (शनी)", d: "The ringed planet. / सुंदर कड्यांचा ग्रह.", img: "https://images-assets.nasa.gov/image/PIA01364/PIA01364~thumb.jpg" },
+            { n: "Uranus (युरेनस)", d: "The ice giant. / बर्फाचा महाकाय ग्रह.", img: "https://images-assets.nasa.gov/image/PIA18182/PIA18182~thumb.jpg" },
+            { n: "Neptune (नेपच्यून)", d: "The windiest planet. / प्रचंड वेगाचे वारे असलेला ग्रह.", img: "https://images-assets.nasa.gov/image/PIA01492/PIA01492~thumb.jpg" }
         ];
 
         const rashis = [
-            { n: "Mesha (मेष)", d: "Aries: Vernal Equinox point. / वसंत संपात बिंदू." },
-            { n: "Vrishabha (वृषभ)", d: "Taurus: Home to Rohini star. / रोहिणी नक्षत्राचे स्थान." },
-            { n: "Mithuna (मिथुन)", d: "Gemini: The celestial twins. / पुनर्वसू नक्षत्राचा भाग." },
-            { n: "Karka (कर्क)", d: "Cancer: Summer Solstice sign. / उन्हाळी संपात बिंदू." }
+            { n: "Mesha (मेष)", d: "Aries: The Ram / धाडसी आणि उत्साही." },
+            { n: "Vrishabha (वृषभ)", d: "Taurus: The Bull / स्थिर आणि कष्टाळू." },
+            { n: "Mithuna (मिथुन)", d: "Gemini: The Twins / बुद्धिमान आणि संवादकुशल." },
+            { n: "Karka (कर्क)", d: "Cancer: The Crab / संवेदनशील आणि दयाळू." },
+            { n: "Simha (सिंह)", d: "Leo: The Lion / तेजस्वी आणि नेतृत्वगुण." },
+            { n: "Kanya (कन्या)", d: "Virgo: The Maiden / शिस्तप्रिय आणि अभ्यासू." },
+            { n: "Tula (तूळ)", d: "Libra: The Scales / न्यायप्रिय आणि संतुलित." },
+            { n: "Vrishchika (वृश्चिक)", d: "Scorpio: The Scorpion / गूढ आणि दृढनिश्चयी." },
+            { n: "Dhanu (धनु)", d: "Sagittarius: The Archer / ज्ञानसाधक आणि ध्येयवादी." },
+            { n: "Makara (मकर)", d: "Capricorn: The Goat / शिस्त आणि मेहनती." },
+            { n: "Kumbha (कुंभ)", d: "Aquarius: The Water Bearer / कल्पक आणि मानवतावादी." },
+            { n: "Meena (मीन)", d: "Pisces: The Fish / कल्पनाशक्ती आणि अंतर्ज्ञान." }
         ];
 
         const heritage = [
-            { n: "GMRT Pune", d: "Giant Metrewave Radio Telescope. / जगातील सर्वात मोठी रेडिओ टेलिस्कोप यंत्रणा।", img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=600" },
-            { n: "Nehru Planetarium", d: "Bridge to space. / खगोलशास्त्रीय वारसा आणि आधुनिक संशोधन केंद्र।", img: "https://images.unsplash.com/photo-1614732414444-096e5f1122d5?auto=format&fit=crop&w=600" }
+            { n: "GMRT Pune", d: "Giant Metrewave Radio Telescope. / जगातील भव्य रेडिओ टेलिस्कोप.", img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=600" },
+            { n: "Nehru Planetarium", d: "Spreading astronomical knowledge. / खगोलशास्त्रीय वारसा केंद्र.", img: "https://images.unsplash.com/photo-1614732414444-096e5f1122d5?auto=format&fit=crop&w=600" }
         ];
 
         const sages = [
-            { n: "Aryabhata (आर्यभट)", d: "Invented Zero and calculated Pi. / शून्य आणि 'पाय' (π) चे मूल्य शोधले।", img: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600" },
-            { n: "Bhaskara II", d: "Master of Gravity. / गुरुत्वाकर्षण आणि बीजगणिताचे महान अभ्यासक।", img: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600" }
+            { n: "Aryabhata (आर्यभट)", d: "First great astronomer-mathematician. / थोर खगोलशास्त्रज्ञ.", img: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600" },
+            { n: "Bhaskara II", d: "Calculated planetary motion correctly. / ग्रहांच्या गतीचे अचूक मोजमाप.", img: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600" }
         ];
 
         function loadContent() {
             const render = (data, id) => {
                 const container = document.getElementById(id);
+                if(!container) return;
+                container.innerHTML = ""; // CLEARS THE LIST FIRST
                 data.forEach(item => {
                     container.innerHTML += `
                         <div class="nav-card" style="max-width: none; margin: 0;">
